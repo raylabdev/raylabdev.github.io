@@ -31,14 +31,16 @@
 <meta property="og:description" content="Lombok 通过注解在编译期帮我们生成 getter&#x2F;setter&#x2F;构造器，省去了大量样板代码，用熟了确实回不去。但如果只知其然而不知其所以然，很容易在运行时才暴露问题——而且往往还是「本地好好的，一到测试&#x2F;生产就炸」。本文把最近在几个项目里陆续踩到的四个典型坑整理出来：@Builder 默认值失效、与 MapStruct 注解处理器冲突、继承场景属性丢失、缺少无参">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-06T01:46:55.086Z">
-<meta property="article:modified_time" content="2026-08-06T01:49:30.572Z">
+<meta property="article:modified_time" content="2026-11-20T00:58:11.267Z">
 <meta property="article:author" content="ssh">
-<meta property="article:tag" content="技术、生活">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="框架原理">
+<meta property="article:tag" content="Java 基础">
 <meta name="twitter:card" content="summary">
   
   
   
-  <meta name="keywords" content="技术、生活">
+  <meta name="keywords" content="Java,框架原理,Java 基础">
 
   <!-- feed -->
   
@@ -97,10 +99,10 @@
 
 
 
-<div class="bread-nav fs12"><div class="left"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">
+<div class="bread-nav fs12"><div class="left"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java/">Java</a></div><div id="post-meta">
     <span>发布于&nbsp;<time datetime="2026-08-06T01:46:55.086Z">2026-08-06</time></span>
     
-    <span>更新于&nbsp;<time datetime="2026-08-06T01:49:30.572Z">2026-08-06</time></span>
+    <span>更新于&nbsp;<time datetime="2026-11-20T00:58:11.267Z">2026-11-20</time></span>
     </div></div></div>
 
 <article class='md-text content post'>

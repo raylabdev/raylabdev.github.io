@@ -31,14 +31,17 @@
 <meta property="og:description" content="背景前段时间项目中做了一次大升级，其中包括数据库分库，由于分了库，原来的单库事务就变成了跨库事务，所以用到了分布式事务，引入了阿里开源的seata；由于业务的特殊性，是属于定点执行任务，在某一时间集中处理业务，所以在压力测试时，seata-server端由于事务并发量大导致seata-server的表有死锁问题，一直重试。显然不可接受，所以决定暂时舍弃seata，还是采用Spring的事务来实现跨">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-11T11:18:36.000Z">
-<meta property="article:modified_time" content="2020-05-11T11:18:36.000Z">
+<meta property="article:modified_time" content="2026-11-20T00:58:11.272Z">
 <meta property="article:author" content="ssh">
-<meta property="article:tag" content="技术、生活">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="事务">
+<meta property="article:tag" content="分布式事务">
 <meta name="twitter:card" content="summary">
   
   
   
-  <meta name="keywords" content="技术、生活">
+  <meta name="keywords" content="Java,Spring,事务,分布式事务">
 
   <!-- feed -->
   
@@ -97,10 +100,10 @@
 
 
 
-<div class="bread-nav fs12"><div class="left"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">
+<div class="bread-nav fs12"><div class="left"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java/">Java</a></div><div id="post-meta">
     <span>发布于&nbsp;<time datetime="2020-05-11T11:18:36.000Z">2020-05-11</time></span>
     
-    <span>更新于&nbsp;<time datetime="2020-05-11T11:18:36.000Z">2020-05-11</time></span>
+    <span>更新于&nbsp;<time datetime="2026-11-20T00:58:11.272Z">2026-11-20</time></span>
     </div></div></div>
 
 <article class='md-text content post'>
