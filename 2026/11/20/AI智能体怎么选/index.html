@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.21.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>AI 智能体怎么选：从产品全景到能力对比 - 重构日志</title>
+
+  
+    <meta name="description" content="大模型刚出现时，我们主要把它当成一个“会聊天、会回答问题的搜索框”。现在的 AI 智能体（Agent）已经更进一步：它可以读取文件、调用工具、执行命令、浏览网页、修改代码，并在执行结果不理想时继续调整。 也正因为能力范围变大了，“哪个智能体最好”这个问题反而没有统一答案。聊天机器人、编程助手、办公助理和个人自动化工具，看起来都在同一个对话框里工作，背后的产品定位、工具权限、记忆方式和收费模式却完全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 智能体怎么选：从产品全景到能力对比">
+<meta property="og:url" content="https://sunshaohua0221.github.io/2026/11/20/AI%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%8E%E4%B9%88%E9%80%89/index.html">
+<meta property="og:site_name" content="重构日志">
+<meta property="og:description" content="大模型刚出现时，我们主要把它当成一个“会聊天、会回答问题的搜索框”。现在的 AI 智能体（Agent）已经更进一步：它可以读取文件、调用工具、执行命令、浏览网页、修改代码，并在执行结果不理想时继续调整。 也正因为能力范围变大了，“哪个智能体最好”这个问题反而没有统一答案。聊天机器人、编程助手、办公助理和个人自动化工具，看起来都在同一个对话框里工作，背后的产品定位、工具权限、记忆方式和收费模式却完全">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-20T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-20T00:52:53.864Z">
+<meta property="article:author" content="ssh">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="Claude Code">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="AI Agent,Codex,Claude Code">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="title" href="/"><div class="main" ff="title">重构日志</div><div class="sub cap">学无止境,行以致远</div></a></div>
+
+<nav class="menu dis-select"></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">AI 智能体怎么选：从产品全景到能力对比</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%8C%BA%E5%88%86%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-text">先区分模型和智能体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B8%82%E9%9D%A2%E4%B8%8A%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">一、市面上的智能体有哪些</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E7%94%A8%E5%9E%8B-AI-%E5%8A%A9%E6%89%8B"><span class="toc-text">1. 通用型 AI 助手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E7%A8%8B%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-text">2. 编程智能体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%9E%E5%85%AC%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%8A%A9%E7%90%86%E5%9E%8B%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-text">3. 办公与个人助理型智能体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-text">4. 智能体搭建平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9E%82%E7%9B%B4%E5%9C%BA%E6%99%AF%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-text">5. 垂直场景智能体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%AF%B9%E6%AF%94"><span class="toc-text">二、智能体应该怎样对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E8%83%BD%E5%8A%9B"><span class="toc-text">1. 基础模型能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E4%BB%BB%E5%8A%A1%E9%97%AD%E7%8E%AF"><span class="toc-text">2. 工具调用与任务闭环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E8%AE%B0%E5%BF%86"><span class="toc-text">3. 上下文与记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9B%86%E6%88%90%E4%B8%8E%E6%89%A9%E5%B1%95%E8%83%BD%E5%8A%9B"><span class="toc-text">4. 集成与扩展能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%87%AA%E4%B8%BB%E6%80%A7%E4%B8%8E%E5%8F%AF%E6%8E%A7%E6%80%A7"><span class="toc-text">5. 自主性与可控性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%B8%8E%E5%8F%AF%E9%AA%8C%E8%AF%81%E6%80%A7"><span class="toc-text">6. 稳定性与可验证性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%88%90%E6%9C%AC"><span class="toc-text">7. 成本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%AE%89%E5%85%A8%E3%80%81%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84"><span class="toc-text">8. 安全、隐私与合规</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%EF%BC%9A%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%90%8C%EF%BC%8C%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%B1%E7%9B%B8%E5%90%8C"><span class="toc-text">一个常见误区：模型相同，智能体就相同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%8E%E6%A0%B7%E9%80%89%E6%8B%A9%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-text">三、怎样选择适合自己的智能体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%85%88%E5%86%99%E5%87%BA%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E4%BB%BB%E5%8A%A1"><span class="toc-text">第一步：先写出一个具体任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%8C%BA%E5%88%86%E2%80%9C%E5%81%B6%E5%B0%94%E7%94%A8%E2%80%9D%E5%92%8C%E2%80%9C%E6%AF%8F%E5%A4%A9%E7%94%A8%E2%80%9D"><span class="toc-text">第二步：区分“偶尔用”和“每天用”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%94%A8%E5%90%8C%E6%A0%B7%E4%B8%89%E9%81%93%E9%A2%98%E5%81%9A%E6%A8%AA%E5%90%91%E6%B5%8B%E8%AF%95"><span class="toc-text">第三步：用同样三道题做横向测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%8C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9D%83%E9%87%8D%E6%89%93%E5%88%86"><span class="toc-text">第四步：按自己的权重打分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E4%BA%BA%E7%BE%A4%E7%9A%84%E5%88%9D%E5%A7%8B%E9%80%89%E6%8B%A9"><span class="toc-text">不同人群的初始选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%92%8C%E6%88%90%E6%9C%AC%E5%BB%BA%E8%AE%AE"><span class="toc-text">安全和成本建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE"><span class="toc-text">最后的选型建议</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div class="left"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/AI/">AI</a></div><div id="post-meta">
+    <span>发布于&nbsp;<time datetime="2026-11-20T02:00:00.000Z">2026-11-20</time></span>
+    
+    <span>更新于&nbsp;<time datetime="2026-11-20T00:52:53.864Z">2026-11-20</time></span>
+    </div></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>AI 智能体怎么选：从产品全景到能力对比</span></h1>
+<p>大模型刚出现时，我们主要把它当成一个“会聊天、会回答问题的搜索框”。现在的 AI 智能体（Agent）已经更进一步：它可以读取文件、调用工具、执行命令、浏览网页、修改代码，并在执行结果不理想时继续调整。</p>
+<p>也正因为能力范围变大了，“哪个智能体最好”这个问题反而没有统一答案。聊天机器人、编程助手、办公助理和个人自动化工具，看起来都在同一个对话框里工作，背后的产品定位、工具权限、记忆方式和收费模式却完全不同。</p>
+<p>这篇文章不打算给出一个绝对排名，而是从三个问题出发：</p>
+<ol>
+<li>市面上的智能体大致有哪些类型；</li>
+<li>应该从哪些维度比较它们；</li>
+<li>怎样用一套低成本的方法，选到真正适合自己的产品。</li>
+</ol>
+<h2 id="先区分模型和智能体"><a href="#先区分模型和智能体" class="headerlink" title="先区分模型和智能体"></a>先区分模型和智能体</h2><p>理解智能体之前，最好先把两个概念拆开：</p>
+<ul>
+<li><strong>模型</strong>负责理解、推理和生成内容，例如 GPT、Claude、DeepSeek、Kimi、GLM、Qwen 等。</li>
+<li><strong>智能体</strong>是在模型外面加上工具、上下文管理、权限系统和工作流的产品。</li>
+</ul>
+<p>可以用一个简化公式表示：</p>
+<blockquote>
+<p>智能体 &#x3D; 模型 + 工具 + 上下文与记忆 + 规划循环 + 权限边界</p>
+</blockquote>
+<p>这意味着，两款产品即使接入同一个模型，实际体验也可能相差很大。一个优秀的编程智能体需要知道怎样搜索代码、运行测试、读取报错、修改文件以及保护危险操作；一个办公智能体则更依赖邮件、文档、日历等连接器。</p>
+<p>所以，比较智能体不能只看“背后接了哪个模型”，还要看模型外面的那层工程能力。</p>
+<h2 id="一、市面上的智能体有哪些"><a href="#一、市面上的智能体有哪些" class="headerlink" title="一、市面上的智能体有哪些"></a>一、市面上的智能体有哪些</h2><p>市面上的产品很多，按使用方式可以分成五类。</p>
+<h3 id="1-通用型-AI-助手"><a href="#1-通用型-AI-助手" class="headerlink" title="1. 通用型 AI 助手"></a>1. 通用型 AI 助手</h3><p>代表产品包括 ChatGPT、Claude、Gemini 和豆包等。</p>
+<p>这类产品的优势是覆盖面广，可以写作、总结、翻译、分析文件、生成图片，也逐步加入了网页访问、代码执行、连接器和自动化能力。它们适合作为日常入口，用一句话概括就是：<strong>不知道先选什么时，先从通用助手开始尝试。</strong></p>
+<p>它们之间的差异通常不在于“能不能回答一个问题”，而在于：</p>
+<ul>
+<li>是否支持文件和图片理解；</li>
+<li>能否联网并引用来源；</li>
+<li>是否支持代码执行、画布或数据图表；</li>
+<li>能否连接邮箱、网盘、日历和团队文档；</li>
+<li>免费额度和会员价格如何；</li>
+<li>在国内网络环境下的可用性如何。</li>
+</ul>
+<h3 id="2-编程智能体"><a href="#2-编程智能体" class="headerlink" title="2. 编程智能体"></a>2. 编程智能体</h3><p>代表产品包括 Codex、Claude Code、GitHub Copilot、Cursor、Windsurf 和 Devin 等。</p>
+<p>编程智能体又可以细分为几种形态：</p>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>代表产品</th>
+<th>主要特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>终端型</td>
+<td>Codex CLI、Claude Code</td>
+<td>直接操作仓库，适合重构、排错和长任务</td>
+</tr>
+<tr>
+<td>IDE 集成型</td>
+<td>GitHub Copilot、Cursor</td>
+<td>编辑体验自然，适合边写边改</td>
+</tr>
+<tr>
+<td>桌面型</td>
+<td>Codex 的桌面入口、Claude Code 桌面端</td>
+<td>图形界面更友好，适合不想长期使用终端的人</td>
+</tr>
+<tr>
+<td>云端任务型</td>
+<td>Codex Cloud、Devin 等</td>
+<td>把任务放到远端执行，再回传代码变更</td>
+</tr>
+</tbody></table>
+<p>这类产品最值得比较的是“完成任务的闭环能力”：能不能理解仓库结构、定位相关文件、调用测试、根据失败结果继续修改，以及能否清楚展示它改动了什么。</p>
+<h3 id="3-办公与个人助理型智能体"><a href="#3-办公与个人助理型智能体" class="headerlink" title="3. 办公与个人助理型智能体"></a>3. 办公与个人助理型智能体</h3><p>代表产品包括 WorkBuddy、Kimi Work、Z-code、Hermes 等。</p>
+<p>这一类产品通常围绕具体工作流设计：</p>
+<ul>
+<li>WorkBuddy 强调连接器、第三方应用接入和较低的上手门槛；</li>
+<li>豆包除了对话，还提供图片、视频等内容生成能力；</li>
+<li>Kimi Work、Z-code 等产品与各自的大模型生态联系更紧密；</li>
+<li>Hermes 这类个人助理更强调长期记忆、习惯理解和个性化服务。</li>
+</ul>
+<p>对于不熟悉命令行的用户，办公助理型产品往往比纯终端工具更容易获得第一次成功体验。</p>
+<h3 id="4-智能体搭建平台"><a href="#4-智能体搭建平台" class="headerlink" title="4. 智能体搭建平台"></a>4. 智能体搭建平台</h3><p>代表产品包括 Coze、Dify、n8n、Microsoft Copilot Studio、LangGraph 等。</p>
+<p>这些平台面向的已经不只是“使用者”，而是“搭建者”。你可以把知识库、API、数据库、审批节点和消息渠道组合起来，做一个客服机器人、内容审核流程或内部知识助手。</p>
+<p>如果你的需求是“每天固定处理一套业务”，搭建平台可能比通用聊天助手更合适；代价是需要投入时间设计流程，并持续维护权限、日志和异常处理。</p>
+<h3 id="5-垂直场景智能体"><a href="#5-垂直场景智能体" class="headerlink" title="5. 垂直场景智能体"></a>5. 垂直场景智能体</h3><p>例如法律检索、客服质检、销售线索跟进、浏览器自动化和财务报销等产品。</p>
+<p>垂直智能体的模型未必最强，但它通常更懂业务流程、数据格式和行业术语。在高度专业化的场景里，“懂业务”有时比“模型参数更多”更有价值。</p>
+<h2 id="二、智能体应该怎样对比"><a href="#二、智能体应该怎样对比" class="headerlink" title="二、智能体应该怎样对比"></a>二、智能体应该怎样对比</h2><p>只比较回答质量，很容易得出错误结论。一个更完整的比较框架至少应该包含下面八个维度。</p>
+<h3 id="1-基础模型能力"><a href="#1-基础模型能力" class="headerlink" title="1. 基础模型能力"></a>1. 基础模型能力</h3><p>重点看模型在目标任务上的表现，而不是只看排行榜名次。</p>
+<ul>
+<li>中文表达是否自然；</li>
+<li>长文档理解是否稳定；</li>
+<li>推理和多步骤任务是否容易中断；</li>
+<li>编程、数学、图像理解是否满足需求；</li>
+<li>是否会频繁编造事实或引用不存在的来源。</li>
+</ul>
+<p>建议用自己真实的工作材料测试，而不是只用“写一首诗”这类通用问题。</p>
+<h3 id="2-工具调用与任务闭环"><a href="#2-工具调用与任务闭环" class="headerlink" title="2. 工具调用与任务闭环"></a>2. 工具调用与任务闭环</h3><p>智能体最重要的差别之一，是它能不能把任务真正做完。</p>
+<p>例如修一个代码报错，理想流程是：</p>
+<ol>
+<li>阅读报错和仓库结构；</li>
+<li>搜索相关代码；</li>
+<li>提出修改方案；</li>
+<li>修改文件；</li>
+<li>运行测试；</li>
+<li>根据失败结果继续修复；</li>
+<li>总结风险和变更范围。</li>
+</ol>
+<p>只会给建议、不能运行验证的助手，和能完成闭环的智能体，不属于同一类工具。</p>
+<h3 id="3-上下文与记忆"><a href="#3-上下文与记忆" class="headerlink" title="3. 上下文与记忆"></a>3. 上下文与记忆</h3><p>这里要区分三种能力：</p>
+<ul>
+<li><strong>单次对话上下文</strong>：一次任务里能记住多少信息；</li>
+<li><strong>项目级上下文</strong>：能否持续理解代码库、文档和团队规范；</li>
+<li><strong>长期记忆</strong>：能否跨会话记住用户习惯、偏好和常用资料。</li>
+</ul>
+<p>上下文窗口大，不等于记忆好用。更重要的是它能否主动找到相关信息，并在上下文过长时做合理压缩。</p>
+<h3 id="4-集成与扩展能力"><a href="#4-集成与扩展能力" class="headerlink" title="4. 集成与扩展能力"></a>4. 集成与扩展能力</h3><p>观察产品是否支持 MCP、插件、API、浏览器、数据库和企业应用连接器。</p>
+<p>对个人用户来说，能连接网盘、日历和笔记软件就很实用；对团队来说，还要考虑权限继承、单点登录、审计日志和数据驻留。</p>
+<h3 id="5-自主性与可控性"><a href="#5-自主性与可控性" class="headerlink" title="5. 自主性与可控性"></a>5. 自主性与可控性</h3><p>自主性越强，可能完成的任务越复杂，但误操作的影响也越大。</p>
+<p>需要重点检查：</p>
+<ul>
+<li>执行命令前是否会请求确认；</li>
+<li>是否有只读、工作区写入和完全访问等权限级别；</li>
+<li>能否限制可访问的目录和网络；</li>
+<li>是否显示每一步工具调用；</li>
+<li>出错后能否停止、回滚或从检查点恢复。</li>
+</ul>
+<p>对代码智能体来说，权限设计不是高级功能，而是基本功能。</p>
+<h3 id="6-稳定性与可验证性"><a href="#6-稳定性与可验证性" class="headerlink" title="6. 稳定性与可验证性"></a>6. 稳定性与可验证性</h3><p>演示效果和长期使用体验是两回事。比较时可以直接问：</p>
+<ul>
+<li>长任务运行一小时后是否还能保持目标；</li>
+<li>失败时是明确报错，还是悄悄编一个结果；</li>
+<li>是否提供执行日志、变更记录和引用来源；</li>
+<li>产品更新后，原有工作流会不会突然失效；</li>
+<li>模型和工具接口不可用时，有没有降级方案。</li>
+</ul>
+<p>对于需要交付的工作，<strong>可检查、可复现、可回滚</strong>通常比“一次回答很惊艳”更重要。</p>
+<h3 id="7-成本"><a href="#7-成本" class="headerlink" title="7. 成本"></a>7. 成本</h3><p>成本不只是订阅价格，还包括：</p>
+<ul>
+<li>免费额度是否足够做完整测试；</li>
+<li>是否按 token、任务或席位收费；</li>
+<li>长上下文和工具调用是否额外计费；</li>
+<li>配置、维护和排错需要多少时间；</li>
+<li>多试几个工具时，是否会产生重复订阅。</li>
+</ul>
+<p>最便宜的方案有时是“月费低，但每天要花一小时修配置”；最贵的方案也可能是“价格高，但能稳定替代重复劳动”。</p>
+<h3 id="8-安全、隐私与合规"><a href="#8-安全、隐私与合规" class="headerlink" title="8. 安全、隐私与合规"></a>8. 安全、隐私与合规</h3><p>接入云端的智能体通常需要上传部分工作内容。选择时要确认：</p>
+<ul>
+<li>数据是否用于训练；</li>
+<li>文件会保存多久；</li>
+<li>企业版是否支持数据隔离和审计；</li>
+<li>API Key 应如何存储；</li>
+<li>是否允许把客户数据发送给第三方模型；</li>
+<li>产品服务条款和所在地区的使用要求。</li>
+</ul>
+<p>这不是“只有大公司才需要考虑”的问题。个人开发者同样可能在里面放数据库地址、日志和业务代码。</p>
+<h2 id="一个常见误区：模型相同，智能体就相同"><a href="#一个常见误区：模型相同，智能体就相同" class="headerlink" title="一个常见误区：模型相同，智能体就相同"></a>一个常见误区：模型相同，智能体就相同</h2><p>很多讨论会把“Codex 和某个办公智能体”简化成“它们都能接 DeepSeek，所以能力一样”。这个结论并不成立。</p>
+<p>如果两者都接入官方顶级模型，模型能力上的差距可能比较明显；如果两者接入同一个第三方模型，模型这一层确实接近了，但最终效果仍然取决于：</p>
+<ul>
+<li>系统提示词是否针对任务优化；</li>
+<li>工具调用格式是否稳定；</li>
+<li>仓库检索和上下文压缩是否合理；</li>
+<li>长任务中能否持续检查自己的结果；</li>
+<li>权限和异常处理是否完善。</li>
+</ul>
+<p>可以把模型看成发动机，把智能体看成整辆车。发动机相同，不代表底盘、传动系统和控制系统相同。</p>
+<h2 id="三、怎样选择适合自己的智能体"><a href="#三、怎样选择适合自己的智能体" class="headerlink" title="三、怎样选择适合自己的智能体"></a>三、怎样选择适合自己的智能体</h2><h3 id="第一步：先写出一个具体任务"><a href="#第一步：先写出一个具体任务" class="headerlink" title="第一步：先写出一个具体任务"></a>第一步：先写出一个具体任务</h3><p>不要从“我想找一个最强 Agent”开始，而要从任务开始。</p>
+<p>例如：</p>
+<ul>
+<li>每周把会议录音整理成任务清单；</li>
+<li>在现有 Java 项目中定位并修复一个报错；</li>
+<li>把产品文档整理成可搜索的知识库；</li>
+<li>每天汇总行业新闻并生成简报；</li>
+<li>根据 Excel 数据制作图表和分析结论。</li>
+</ul>
+<p>任务越具体，越容易判断产品是不是真的有用。</p>
+<h3 id="第二步：区分“偶尔用”和“每天用”"><a href="#第二步：区分“偶尔用”和“每天用”" class="headerlink" title="第二步：区分“偶尔用”和“每天用”"></a>第二步：区分“偶尔用”和“每天用”</h3><p>偶尔使用的任务，适合选择开箱即用的产品，不值得花大量时间配置。每天使用的任务则值得投入时间建立模板、连接器、项目规则和自动化流程。</p>
+<h3 id="第三步：用同样三道题做横向测试"><a href="#第三步：用同样三道题做横向测试" class="headerlink" title="第三步：用同样三道题做横向测试"></a>第三步：用同样三道题做横向测试</h3><p>建议不要只看宣传页，而是给候选产品做同一组测试：</p>
+<ol>
+<li><strong>基础题</strong>：能否理解你提供的真实文件或代码；</li>
+<li><strong>过程题</strong>：能否分解步骤并正确调用工具；</li>
+<li><strong>异常题</strong>：当资料缺失、工具失败或需求有冲突时，能否发现并说明问题。</li>
+</ol>
+<p>每款产品记录以下结果：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>记录方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>首次完成任务耗时</td>
+<td>从输入需求到得到可用结果</td>
+</tr>
+<tr>
+<td>人工返工次数</td>
+<td>需要用户纠正或补资料的次数</td>
+</tr>
+<tr>
+<td>工具调用成功率</td>
+<td>是否经常卡在权限、格式或网络问题</td>
+</tr>
+<tr>
+<td>结果可验证性</td>
+<td>是否提供来源、日志、测试或变更记录</td>
+</tr>
+<tr>
+<td>可重复性</td>
+<td>把同一任务再运行一次，结果是否稳定</td>
+</tr>
+<tr>
+<td>实际成本</td>
+<td>订阅、调用量和配置维护时间</td>
+</tr>
+</tbody></table>
+<p>完成三个任务，通常比看十篇测评更有用。</p>
+<h3 id="第四步：按自己的权重打分"><a href="#第四步：按自己的权重打分" class="headerlink" title="第四步：按自己的权重打分"></a>第四步：按自己的权重打分</h3><p>可以用一个简单的 100 分模型：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th align="right">建议权重</th>
+<th>判断问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>任务完成能力</td>
+<td align="right">30</td>
+<td>能否独立完成自己的核心任务</td>
+</tr>
+<tr>
+<td>工具与生态</td>
+<td align="right">20</td>
+<td>是否能接入现有软件和数据</td>
+</tr>
+<tr>
+<td>稳定性与可验证性</td>
+<td align="right">20</td>
+<td>是否长期可靠、方便检查和回滚</td>
+</tr>
+<tr>
+<td>使用与维护成本</td>
+<td align="right">15</td>
+<td>学习、订阅和排错成本是否可接受</td>
+</tr>
+<tr>
+<td>安全与合规</td>
+<td align="right">15</td>
+<td>是否符合个人或公司的数据要求</td>
+</tr>
+</tbody></table>
+<p>权重不是固定答案。个人尝鲜可以把成本调高，企业则应该提高安全、审计和权限的权重。</p>
+<h3 id="不同人群的初始选择"><a href="#不同人群的初始选择" class="headerlink" title="不同人群的初始选择"></a>不同人群的初始选择</h3><p>下面是几条实践导向的起点，不是绝对排名：</p>
+<table>
+<thead>
+<tr>
+<th>使用人群</th>
+<th>可以优先尝试</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>零基础新手</td>
+<td>WorkBuddy、豆包等图形化产品</td>
+<td>上手路径短，连接器和内容生成能力较直观</td>
+</tr>
+<tr>
+<td>想使用国产模型</td>
+<td>Kimi Work、Z-code 及模型厂商自己的产品</td>
+<td>模型与工作流通常结合得更紧，价格和访问体验更本地化</td>
+</tr>
+<tr>
+<td>重视个人记忆</td>
+<td>Hermes 等个人助理产品</td>
+<td>更适合积累长期偏好和习惯</td>
+</tr>
+<tr>
+<td>经常写代码</td>
+<td>Codex、Claude Code、Cursor、Copilot</td>
+<td>能直接接触仓库、工具链和测试流程</td>
+</tr>
+<tr>
+<td>企业团队</td>
+<td>带团队管理、SSO、审计和私有部署能力的方案</td>
+<td>权限、数据和运维比单点能力更重要</td>
+</tr>
+<tr>
+<td>需要固定业务流程</td>
+<td>Coze、Dify、n8n 等平台</td>
+<td>可以把知识库、API、审批和消息渠道组合起来</td>
+</tr>
+</tbody></table>
+<p>新手不必一次订阅很多产品。比较实际的做法是先用免费额度或短期订阅测试两到三款，再保留最符合自己工作流的一款。</p>
+<h2 id="安全和成本建议"><a href="#安全和成本建议" class="headerlink" title="安全和成本建议"></a>安全和成本建议</h2><p>无论是 Codex、Claude Code 还是其他编程智能体，都建议从低权限开始：</p>
+<ol>
+<li>在独立分支或无关仓库中试运行；</li>
+<li>默认使用只读或工作区写入权限；</li>
+<li>危险命令要求人工确认；</li>
+<li>不把生产密钥、客户数据和数据库密码放进提示词；</li>
+<li>为 API Key 设置额度，定期轮换；</li>
+<li>重要操作保留 Diff、测试结果和日志；</li>
+<li>长任务先要求计划，确认范围后再执行。</li>
+</ol>
+<p>智能体的价值在于减少重复操作，而不是把最终责任也交给它。越是能自动修改文件的工具，越需要清楚它做了什么、为什么这样做，以及如何恢复。</p>
+<h2 id="最后的选型建议"><a href="#最后的选型建议" class="headerlink" title="最后的选型建议"></a>最后的选型建议</h2><p>如果只是刚开始接触，可以先用 WorkBuddy、豆包这类图形化产品建立使用习惯，体验连接器、文件理解和内容生成。遇到更复杂的代码任务，再尝试 Codex 或 Claude Code。</p>
+<p>如果已经熟悉命令行并且经常处理复杂项目，可以同时保留 Codex 和 Claude Code，按任务切换：</p>
+<ul>
+<li>需要完整的代码搜索、修改、测试和变更说明时，比较两者在真实仓库中的完成率；</li>
+<li>需要桌面交互、云端任务或 IDE 集成时，比较各自的入口和同步能力；</li>
+</ul>
+<p>选择智能体时，最值得记录的不是“它回答得像不像人”，而是下面三个数字：</p>
+<ul>
+<li>同一任务需要返工几次；</li>
+<li>每次任务实际花多少钱；</li>
+<li>出问题时需要多久才能定位和恢复。</li>
+</ul>
+<p>能在这三个指标上持续表现稳定的产品，才更可能成为真正的工作流伙伴。</p>
+<blockquote>
+<p>产品功能、价格和模型兼容性会持续变化。本文重点讨论选型方法，实际购买和部署前请以产品当前官方说明为准。</p>
+</blockquote>
+
+
+
+<div class="article-footer reveal fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/08/07/fireworks-tech-graph-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF%E6%B5%81%E7%A8%8B%E5%9B%BE/">用自然语言生成技术流程图的 Agent Skill：fireworks-tech-graph</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.21.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.21.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img, .gallery img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
