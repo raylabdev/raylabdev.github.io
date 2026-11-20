@@ -26,7 +26,7 @@
     <meta name="description" content="最近在一次业务开发中，需要将用户行为记录的逻辑改为异步执行，于是很自然地使用了 CompletableFuture.runAsync() 来包装 Feign 接口调用。本地测试一切正常，但部署到开发环境后，却频繁出现 ClassNotFoundException。 1. 问题现象代码本身很简单： 123CompletableFuture.runAsync(() -&gt; &#123;    us">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CompletableFuture-Feign-ClassNotFound问题排查">
-<meta property="og:url" content="https://sunshaohua0221.github.io/2026/06/18/CompletableFuture-Feign-ClassNotFound%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/index.html">
+<meta property="og:url" content="https://raylabdev.github.io/2026/06/18/CompletableFuture-Feign-ClassNotFound%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/index.html">
 <meta property="og:site_name" content="重构日志">
 <meta property="og:description" content="最近在一次业务开发中，需要将用户行为记录的逻辑改为异步执行，于是很自然地使用了 CompletableFuture.runAsync() 来包装 Feign 接口调用。本地测试一切正常，但部署到开发环境后，却频繁出现 ClassNotFoundException。 1. 问题现象代码本身很简单： 123CompletableFuture.runAsync(() -&gt; &#123;    us">
 <meta property="og:locale" content="zh_CN">

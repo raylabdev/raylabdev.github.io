@@ -26,17 +26,17 @@
     <meta name="description" content="SQL的一生 从客户端的Socket读取一条SQL  获取一个token  从PD获取TSO（事务的时间戳）  使用Parser将SQL parse为AST  将AST compile为执行计划     Logical Optimizer  Physical  Optimizer  Execute Plan    根据对应的执行计划，最底层的Executor会根据这条SQL处理的Key范围构建出多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TiDB-SQL的一生">
-<meta property="og:url" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/index.html">
+<meta property="og:url" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/index.html">
 <meta property="og:site_name" content="重构日志">
 <meta property="og:description" content="SQL的一生 从客户端的Socket读取一条SQL  获取一个token  从PD获取TSO（事务的时间戳）  使用Parser将SQL parse为AST  将AST compile为执行计划     Logical Optimizer  Physical  Optimizer  Execute Plan    根据对应的执行计划，最底层的Executor会根据这条SQL处理的Key范围构建出多">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/TiKV-read.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Parse-Duration.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Compile-Duration.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Get-Token-Duration.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/99-completed-commands-duration.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/99-grpc-message-duration.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/coprocessor-cpu.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/TiKV-read.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Parse-Duration.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Compile-Duration.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/Get-Token-Duration.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/99-completed-commands-duration.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/99-grpc-message-duration.png">
+<meta property="og:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/coprocessor-cpu.png">
 <meta property="article:published_time" content="2022-02-17T09:44:32.000Z">
 <meta property="article:modified_time" content="2026-11-20T00:58:11.273Z">
 <meta property="article:author" content="ssh">
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="慢查询">
 <meta property="article:tag" content="TiDB">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sunshaohua0221.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/TiKV-read.png">
+<meta name="twitter:image" content="https://raylabdev.github.io/2022/02/17/TiDB-SQL%E7%9A%84%E4%B8%80%E7%94%9F/TiKV-read.png">
   
   
   
@@ -257,7 +257,7 @@
 </ul>
 <h3 id="慢查询排查技能-slow-query-log"><a href="#慢查询排查技能-slow-query-log" class="headerlink" title="慢查询排查技能 - slow query log"></a>慢查询排查技能 - slow query log</h3><p>#Time：2019-04-25-15:19:33.26029 +0800     –记录了sql执行完成的时间，不是开始的时间</p>
 <p>#Txn_start_ts：407942403346923524        –事务开始的时间戳</p>
-<p>#User：<a href="mailto:&#114;&#x6f;&#111;&#116;&#x40;&#x31;&#x32;&#x37;&#46;&#x30;&#x2e;&#x30;&#46;&#x31;">&#114;&#x6f;&#111;&#116;&#x40;&#x31;&#x32;&#x37;&#46;&#x30;&#x2e;&#x30;&#46;&#x31;</a></p>
+<p>#User：<a href="mailto:&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x32;&#x37;&#x2e;&#x30;&#46;&#48;&#46;&#x31;">&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x32;&#x37;&#x2e;&#x30;&#46;&#48;&#46;&#x31;</a></p>
 <p>#Conn_ID：1</p>
 <p>#Query_time：2.632671582          –sql整体执行时间</p>
 <p>#Process_time：0.079 Wait_time：0.009 Backoff_time：0.1 Request_count：8 Total_keys：20008 Process_keys：20000         –TiKV相关时间</p>

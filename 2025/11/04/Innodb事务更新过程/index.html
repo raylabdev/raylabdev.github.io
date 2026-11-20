@@ -26,12 +26,12 @@
     <meta name="description" content="InnoDB事务更新过程 在Buffer Pool中读取数据：当InnoDB需要更新一条记录时，首先会在Buffer Pool中查找该记录是否在内存中。如果没有在内存中，则从磁盘读取该页到Buffer Pool中。 记录UndoLog：在修改操作前，InnoDB会在Undo Log中记录修改前的数据。Undo Log是用来保证事务原子性和一致性的一种机制，用于在发生事务回滚等情况时，将修改操作回滚">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Innodb事务更新过程">
-<meta property="og:url" content="https://sunshaohua0221.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:url" content="https://raylabdev.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="重构日志">
 <meta property="og:description" content="InnoDB事务更新过程 在Buffer Pool中读取数据：当InnoDB需要更新一条记录时，首先会在Buffer Pool中查找该记录是否在内存中。如果没有在内存中，则从磁盘读取该页到Buffer Pool中。 记录UndoLog：在修改操作前，InnoDB会在Undo Log中记录修改前的数据。Undo Log是用来保证事务原子性和一致性的一种机制，用于在发生事务回滚等情况时，将修改操作回滚">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB.png">
-<meta property="og:image" content="https://sunshaohua0221.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB2.png">
+<meta property="og:image" content="https://raylabdev.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB.png">
+<meta property="og:image" content="https://raylabdev.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB2.png">
 <meta property="article:published_time" content="2025-11-04T10:48:58.000Z">
 <meta property="article:modified_time" content="2026-11-20T00:58:11.264Z">
 <meta property="article:author" content="ssh">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="事务">
 <meta property="article:tag" content="数据一致性">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sunshaohua0221.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB.png">
+<meta name="twitter:image" content="https://raylabdev.github.io/2025/11/04/Innodb%E4%BA%8B%E5%8A%A1%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B/InnoDB.png">
   
   
   

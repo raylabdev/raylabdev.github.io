@@ -26,7 +26,7 @@
     <meta name="description" content="什么情况下会出现数据库和缓存不一致的问题？写写并发在并发场景中，如果两个线程，同时进行先写数据库，后更新缓存的操作，就可能会出现不一致：    W W    写数据库，更新成20     写数据库，更新成10    写缓存，更新成10   写缓存，更新成20（数据不一致）    如果在并发场景中，如果两个线程，同时进行先更新缓存，后写数据库的操作，同理，也可能会出现不一致：    W W    写">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis和数据库一致性问题">
-<meta property="og:url" content="https://sunshaohua0221.github.io/2025/11/08/Redis%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://raylabdev.github.io/2025/11/08/Redis%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="重构日志">
 <meta property="og:description" content="什么情况下会出现数据库和缓存不一致的问题？写写并发在并发场景中，如果两个线程，同时进行先写数据库，后更新缓存的操作，就可能会出现不一致：    W W    写数据库，更新成20     写数据库，更新成10    写缓存，更新成10   写缓存，更新成20（数据不一致）    如果在并发场景中，如果两个线程，同时进行先更新缓存，后写数据库的操作，同理，也可能会出现不一致：    W W    写">
 <meta property="og:locale" content="zh_CN">
